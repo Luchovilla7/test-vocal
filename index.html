@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Vocal · Own Your Voice</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --plum: #50175E;
+      --plum-dark: #380f42;
+      --plum-mid: #7a3589;
+      --plum-light: rgba(80, 23, 94, 0.08);
+      --red: #A8041F;
+      --red-hover: #d4052a;
+      --cream: #F5E9D6;
+      --cream-dark: #eddfc6;
+      --white: #fff;
+      --text-dark: #2a0d32;
+      --text-mid: #5a3a5a;
+      --text-muted: rgba(80, 23, 94, 0.55);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 300;
+      background: var(--cream);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 3rem 1.25rem 4rem;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .brand-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 32px;
+      color: var(--plum-dark);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .tagline {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      font-weight: 400;
+    }
+
+    .header-divider {
+      width: 36px;
+      height: 1px;
+      background: var(--plum);
+      margin: 1.25rem auto 0;
+      opacity: 0.3;
+    }
+
+    /* ── INTRO CARD ── */
+    .intro-card {
+      background: var(--white);
+      border-radius: 16px;
+      border: 0.5px solid rgba(80, 23, 94, 0.14);
+      padding: 2rem 1.75rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.65s 0.1s ease both;
+    }
+
+    .intro-card h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--plum-dark);
+      line-height: 1.4;
+      margin-bottom: 0.9rem;
+    }
+
+    .intro-card p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text-mid);
+    }
+
+    .btn-start {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 2.25rem;
+      background: var(--plum);
+      color: var(--cream);
+      font-family: 'Manrope', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.12s;
+    }
+
+    .btn-start:hover {
+      background: var(--plum-dark);
+    }
+
+    .btn-start:active {
+      transform: scale(0.97);
+    }
+
+    /* ── PROGRESS ── */
+    #progress-section {
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .progress-track {
+      height: 3px;
+      background: rgba(80, 23, 94, 0.12);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 3px;
+      background: var(--plum);
+      border-radius: 99px;
+      transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ── QUESTION CARD ── */
+    .question-card {
+      background: var(--white);
+      border-radius: 16px;
+      border: 0.5px solid rgba(80, 23, 94, 0.14);
+      padding: 1.75rem 1.5rem 1.5rem;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .q-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      font-weight: 500;
+      margin-bottom: 0.65rem;
+    }
+
+    .q-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      font-size: 19px;
+      color: var(--plum-dark);
+      line-height: 1.5;
+      margin-bottom: 1.35rem;
+    }
+
+    /* ── OPTIONS ── */
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      width: 100%;
+      background: var(--cream);
+      border: 1.5px solid transparent;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 8px;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Manrope', sans-serif;
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--text-dark);
+      line-height: 1.55;
+      transition: border-color 0.18s, background 0.18s;
+    }
+
+    .option:hover {
+      border-color: rgba(80, 23, 94, 0.35);
+      background: rgba(80, 23, 94, 0.04);
+    }
+
+    .option.selected {
+      border-color: var(--plum);
+      background: rgba(80, 23, 94, 0.07);
+    }
+
+    .option:last-child {
+      margin-bottom: 0;
+    }
+
+    .opt-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(80, 23, 94, 0.13);
+      color: var(--plum);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-top: 1px;
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .option.selected .opt-letter {
+      background: var(--plum);
+      color: var(--cream);
+    }
+
+    /* ── NAV BUTTON ── */
+    .btn-next {
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--plum);
+      color: var(--cream);
+      font-family: 'Manrope', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.12s, opacity 0.2s;
+      animation: fadeUp 0.4s 0.05s ease both;
+    }
+
+    .btn-next:hover:not(:disabled) {
+      background: var(--plum-dark);
+    }
+
+    .btn-next:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .btn-next:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    /* ── RESULT ── */
+    .result-wrap {
+      animation: fadeUp 0.55s ease both;
+    }
+
+    .result-badge {
+      display: inline-block;
+      background: var(--plum);
+      color: var(--cream);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 99px;
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .result-card {
+      background: var(--white);
+      border-radius: 16px;
+      border: 0.5px solid rgba(80, 23, 94, 0.14);
+      padding: 2.25rem 1.75rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .result-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      font-size: 24px;
+      color: var(--plum-dark);
+      line-height: 1.35;
+      margin-bottom: 1rem;
+    }
+
+    .result-rule {
+      width: 32px;
+      height: 1.5px;
+      background: var(--red);
+      border-radius: 99px;
+      margin: 0 auto 1.25rem;
+    }
+
+    .result-body {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text-mid);
+      text-align: left;
+    }
+
+    .result-body p+p {
+      margin-top: 0.85rem;
+    }
+
+    .btn-cta {
+      display: inline-block;
+      margin-top: 1.75rem;
+      padding: 0.85rem 2.5rem;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Manrope', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 99px;
+      transition: background 0.2s, transform 0.12s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-cta:hover {
+      background: var(--red-hover);
+    }
+
+    .btn-cta:active {
+      transform: scale(0.97);
+    }
+
+    .btn-restart {
+      display: block;
+      margin: 1rem auto 0;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-family: 'Manrope', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.18s;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .btn-restart:hover {
+      color: var(--plum);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ── HELPERS ── */
+    .hidden {
+      display: none !important;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 2rem 1rem 3rem;
+      }
+
+      .brand-name {
+        font-size: 26px;
+      }
+
+      .q-text {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <!-- HEADER -->
+    <header>
+      <div class="eyebrow">Carolina Roisinblit</div>
+      <div class="brand-name">Own Your Voice</div>
+      <div class="tagline">Pedagogía Vocal · Infancias y Adolescencias</div>
+      <div class="header-divider"></div>
+    </header>
+
+    <!-- INTRO -->
+    <div id="intro" class="intro-card">
+      <h2>¿Estás lista para enseñarle a cantar a niñxs y adolescentes?</h2>
+      <p>Este test te ayuda a descubrir en qué momento de tu camino pedagógico estás y qué herramientas necesitás para
+        acompañar mejor las voces en desarrollo.</p>
+      <p style="margin-top:0.75rem;">Son 6 preguntas. Tomá unos minutos para responderte con honestidad.</p>
+      <button class="btn-start" onclick="startQuiz()">Comenzar el test</button>
+    </div>
+
+    <!-- PROGRESS -->
+    <div id="progress-section" class="hidden">
+      <div class="progress-meta">
+        <span id="q-counter">Pregunta 1 de 6</span>
+        <span id="q-pct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div id="quiz-section" class="hidden">
+      <div class="question-card" id="question-card">
+        <div class="q-label" id="q-label"></div>
+        <div class="q-text" id="q-text"></div>
+        <div id="options-container"></div>
+      </div>
+      <button class="btn-next" id="btn-next" disabled onclick="nextQuestion()">Siguiente</button>
+    </div>
+
+    <!-- RESULT -->
+    <div id="result-section" class="hidden result-wrap">
+      <div class="result-card">
+        <div class="result-badge" id="result-badge"></div>
+        <div class="result-title" id="result-title"></div>
+        <div class="result-rule"></div>
+        <div class="result-body" id="result-body"></div>
+        <a href="https://pedagogia-vocal-infantil-un9p12o.gamma.site/" id="result-cta" class="btn-cta">Quiero saber más
+          →</a>
+      </div>
+      <button class="btn-restart" onclick="restart()">Volver a empezar</button>
+    </div>
+
+    <footer>Own Your Voice &middot; Carolina Roisinblit</footer>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        text: "Cuando pienso en trabajar con niñxs o adolescentes, hoy me siento…",
+        options: [
+          { l: "A", t: "Con entusiasmo y curiosidad, pero también con dudas sobre cómo acompañarlos bien" },
+          { l: "B", t: "Con ganas, pero sintiendo que me faltan herramientas concretas" },
+          { l: "C", t: "Bastante insegurx, no sé si estoy preparadx para eso" },
+          { l: "D", t: "Muy cómodx, es un espacio que disfruto y en el que me siento segurx" }
+        ]
+      },
+      {
+        text: "En una clase de canto con infancias o adolescencias, mi mayor desafío suele ser…",
+        options: [
+          { l: "A", t: "Sostener la atención y la organización del grupo" },
+          { l: "B", t: "Equilibrar juego y aprendizaje técnico" },
+          { l: "C", t: "Manejar la vergüenza, la exposición o el miedo a equivocarse" },
+          { l: "D", t: "Sentir que no tengo suficientes recursos pedagógicos específicos" }
+        ]
+      },
+      {
+        text: "Cuando un niño o adolescente no &ldquo;responde&rdquo; como espero en clase, suelo…",
+        options: [
+          { l: "A", t: "Intentar explicarle más claro o corregir lo que está haciendo" },
+          { l: "B", t: "Cambiar de estrategia e improvisar en el momento" },
+          { l: "C", t: "Sentir frustración o inseguridad sobre cómo continuar" },
+          { l: "D", t: "Buscar que la clase siga siendo un espacio de disfrute, aunque no todo salga como esperaba" }
+        ]
+      },
+      {
+        text: "En relación al movimiento y la energía en clase, pienso que…",
+        options: [
+          { l: "A", t: "Es algo que hay que controlar para poder enseñar bien" },
+          { l: "B", t: "Puede integrarse, pero me cuesta organizarlo" },
+          { l: "C", t: "Es parte natural del aprendizaje y trato de trabajarlo con el cuerpo" },
+          { l: "D", t: "Es fundamental, y diseño mis clases en función de eso" }
+        ]
+      },
+      {
+        text: "Cuando trabajo con voces en desarrollo, me preocupa especialmente…",
+        options: [
+          { l: "A", t: "Hacerlo &ldquo;bien&rdquo; técnicamente y no generar malos hábitos" },
+          { l: "B", t: "No saber cómo guiar procesos sin forzar la voz" },
+          { l: "C", t: "No tener suficiente formación específica en pedagogía vocal infantil/adolescente" },
+          { l: "D", t: "Acompañar el aspecto emocional además del vocal" }
+        ]
+      },
+      {
+        text: "Sobre la adolescencia en particular, siento que…",
+        options: [
+          { l: "A", t: "Es una etapa desafiante y a veces difícil de sostener en clase" },
+          { l: "B", t: "Me genera dudas por los cambios de voz y la vergüenza" },
+          { l: "C", t: "Me interesa muchísimo, pero me falta estructura pedagógica" },
+          { l: "D", t: "Es un grupo con el que me siento muy comodx trabajando" }
+        ]
+      }
+    ];
+
+    const results = {
+      A: {
+        badge: "Mayoría A",
+        title: "Estás en un momento de transición pedagógica",
+        body: [
+          "Trabajar con infancias y adolescencias te interesa, pero hoy estás atravesando el desafío de sostener la clase desde la estructura y la organización.",
+          "Eso es muy común cuando no se ha trabajado específicamente con pedagogía vocal en desarrollo. La buena noticia: esto no es una cuestión de talento docente, sino de herramientas.",
+          "Esta formación puede ayudarte a convertir la incertidumbre en criterio pedagógico, y a ganar seguridad en el manejo de grupos y dinámicas vocales."
+        ],
+        cta: "#"
+      },
+      B: {
+        badge: "Mayoría B",
+        title: "Tenés una base sólida, estás buscando más herramientas",
+        body: [
+          "Ya trabajás con infancias o adolescencias, o estás cerca de hacerlo, pero sentís que hay situaciones que todavía te desbordan o te generan dudas.",
+          "Especialmente en relación al juego, la organización de clase y la respuesta del grupo.",
+          "Esta formación puede ayudarte a ordenar tu práctica, sumar recursos concretos y afinar tu criterio pedagógico."
+        ],
+        cta: "#"
+      },
+      C: {
+        badge: "Mayoría C",
+        title: "Estás en un momento de alta sensibilidad pedagógica",
+        body: [
+          "Tenés mucha conciencia de los desafíos de trabajar con voces en desarrollo, especialmente en relación a la seguridad, la emoción y la exposición.",
+          "Probablemente estés buscando un marco más sólido para poder sostener ese cuidado con herramientas concretas.",
+          "Esta formación puede ayudarte a transformar esa sensibilidad en práctica pedagógica estable y clara."
+        ],
+        cta: "#"
+      },
+      D: {
+        badge: "Mayoría D",
+        title: "Ya tenés experiencia y estás en un nivel de refinamiento pedagógico",
+        body: [
+          "Ya trabajás con infancias y adolescencias con comodidad y criterio propio.",
+          "Es probable que estés buscando profundizar, ordenar o actualizar tu mirada sobre la pedagogía vocal en desarrollo.",
+          "Esta formación puede funcionar como espacio de revisión, actualización y expansión de tu práctica."
+        ],
+        cta: "#"
+      }
+    };
+
+    let current = 0;
+    let answers = [];
+
+    function startQuiz() {
+      document.getElementById('intro').classList.add('hidden');
+      document.getElementById('progress-section').classList.remove('hidden');
+      document.getElementById('quiz-section').classList.remove('hidden');
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const q = questions[current];
+      const total = questions.length;
+      const pct = Math.round((current / total) * 100);
+
+      document.getElementById('q-counter').textContent = `Pregunta ${current + 1} de ${total}`;
+      document.getElementById('q-pct').textContent = `${pct}%`;
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('q-label').textContent = `Pregunta ${current + 1}`;
+      document.getElementById('q-text').textContent = q.text;
+
+      const btn = document.getElementById('btn-next');
+      btn.textContent = current < total - 1 ? 'Siguiente →' : 'Ver mi resultado →';
+      btn.disabled = answers[current] === undefined;
+
+      const container = document.getElementById('options-container');
+      container.innerHTML = '';
+      q.options.forEach((o, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'option' + (answers[current] === i ? ' selected' : '');
+        btn.innerHTML = `<span class="opt-letter">${o.l}</span><span>${o.t}</span>`;
+        btn.onclick = () => selectOption(i);
+        container.appendChild(btn);
+      });
+
+      const card = document.getElementById('question-card');
+      card.style.animation = 'none';
+      card.offsetHeight;
+      card.style.animation = 'fadeUp 0.35s ease both';
+    }
+
+    function selectOption(i) {
+      answers[current] = i;
+      document.querySelectorAll('.option').forEach((b, idx) => {
+        b.classList.toggle('selected', idx === i);
+        b.querySelectorAll('.opt-letter').forEach(el => { });
+      });
+      document.getElementById('btn-next').disabled = false;
+    }
+
+    function nextQuestion() {
+      if (answers[current] === undefined) return;
+      current++;
+      if (current < questions.length) {
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      document.getElementById('progress-section').classList.add('hidden');
+      document.getElementById('quiz-section').classList.add('hidden');
+
+      const counts = { A: 0, B: 0, C: 0, D: 0 };
+      const letters = ['A', 'B', 'C', 'D'];
+      answers.forEach(a => counts[letters[a]]++);
+      let winner = 'A', max = 0;
+      for (const l of letters) { if (counts[l] > max) { max = counts[l]; winner = l; } }
+
+      const r = results[winner];
+      document.getElementById('result-badge').textContent = r.badge;
+      document.getElementById('result-title').textContent = r.title;
+      document.getElementById('result-body').innerHTML = r.body.map(p => `<p>${p}</p>`).join('');
+      document.getElementById('result-cta').href = r.cta;
+
+      document.getElementById('result-section').classList.remove('hidden');
+    }
+
+    function restart() {
+      current = 0;
+      answers = [];
+      document.getElementById('result-section').classList.add('hidden');
+      document.getElementById('progress-section').classList.remove('hidden');
+      document.getElementById('quiz-section').classList.remove('hidden');
+      renderQuestion();
+    }
+  </script>
+</body>
+
+</html>
